@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Page1 from './src/components/Page1'
+import LoginPage from './LoginPage'
 
-export default function App() {
+export default function Page1() {
   return (
-      <Page1 />
-    
+    <View>
+        <LoginPage />
+    </View>
   )
 }
 
