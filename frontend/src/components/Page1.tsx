@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import LoginPage from './LoginPage'
+import LanguageSetup from './LanguageSetup'
 
 export default function Page1() {
   return (
     <View>
-        <LoginPage />
+        <LanguageSetup />
     </View>
   )
 }
