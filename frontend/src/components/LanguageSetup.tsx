@@ -3,6 +3,8 @@ import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../App';
+import { useNavigation } from '@react-navigation/native';
+
 
 const data = [
   { label: 'हिंदी', value: '1' },
@@ -15,15 +17,12 @@ const data = [
 
 type NavigationProps = NativeStackScreenProps<RootStackParamList, 'Page1'>;
 
-export default function LanguageSetup({ navigation }: NavigationProps) {
+export default function LanguageSetup() {
   const [value, setValue] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
+  const navigation = useNavigation();
 
-  useEffect(() => {
-    if (value === '2') {
-      navigation.navigate('RegisterPage');
-    }
-  }, [value, navigation]);
+ 
 
   return (
     <ImageBackground source={require('../assets/Field.jpg')} style={styles.backgroundImage}>
@@ -49,6 +48,9 @@ export default function LanguageSetup({ navigation }: NavigationProps) {
           onChange={item => {
             setValue(item.value);
             setIsFocus(false);
+            if (item.value === '2') {
+              navigation.navigate('RegisterPage');
+            }
           }}
         />
       </View>
