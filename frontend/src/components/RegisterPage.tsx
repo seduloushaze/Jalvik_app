@@ -32,32 +32,7 @@ export default function RegisterPage() {
       }
     }
   };
-// const handleSubmit = () => { 
-  
-//   const requestOptions = { 
-//       method: 'POST', 
-//       headers: { 'Content-Type': 'application/json' }, 
-//       body: JSON.stringify({ postName: 'React updates ' }) 
-//   }; 
 
-//   const postExample = async () => { 
-//       try { 
-//           await fetch( 
-//               'https://10.0.3.2:8000/apis/check_number/', requestOptions) 
-//               .then(response => { 
-//                   response.json() 
-//                       .then(data => { 
-//                           Alert.alert("Post created at : ",  
-//                           data.createdAt); 
-//                       }); 
-//               }) 
-//       } 
-//       catch (error) { 
-//           console.error(error); 
-//       } 
-//   } 
-
-// }
 
 
   return (
