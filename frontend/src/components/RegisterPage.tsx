@@ -1,17 +1,27 @@
-import { StyleSheet, Text, TextInput, View, Button, Alert } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, Alert , TouchableOpacity} from 'react-native';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { server } from '../../metro.config';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../App';
+import { useNavigation } from '@react-navigation/native';
+
+type NavigationProps = NativeStackScreenProps<RootStackParamList, 'Page1'>;
 
 export default function RegisterPage() {
   const [number, setNumber] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
+  const navigation = useNavigation();
+  
+  const nextPage = () => {
+    navigation.navigate('FarmPage');
+  }
 
   const handleSubmit = async () => {
     console.log('Number:', number);
     
-    const url = 'http://192.168.1.11:8000/apis/check_number/'; // Replace with your server IP
+    const url = 'http://192.168.1.8:8000/apis/check_number/'; // Replace with your server IP
     const data = { number: number };
 
     const headers = {
@@ -48,7 +58,9 @@ export default function RegisterPage() {
         onChangeText={(text) => setNumber(text)}
       />
       {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
-      <Button title="Submit" onPress={handleSubmit} />
+      <TouchableOpacity style={styles.button} onPress={responseMessage === 'Number saved successfully' ? nextPage : handleSubmit}>
+        <Text style={styles.buttonText}>{responseMessage === 'Number saved successfully' ? 'NEXT' : 'SUBMIT' }</Text>
+      </TouchableOpacity>
       {responseMessage ? <Text style={styles.response}>{responseMessage}</Text> : null}
     </View>
   );
@@ -84,5 +96,17 @@ const styles = StyleSheet.create({
   response: {
     color: 'green',
     marginTop: 10,
+  },
+  button: {
+    marginTop: 15,
+    backgroundColor: '#65B741',
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
