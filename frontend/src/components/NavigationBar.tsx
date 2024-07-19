@@ -19,7 +19,15 @@ const NavigationBar = () => {
     <SafeAreaView>
       <View style={styles.line}></View>
       <View style={styles.container}>
-        
+        <View>
+          <Pressable
+            onPress={() => handlePress('Profile')}
+            style={[styles.pressable, activeButton === 'Profile' && styles.pressableActive]}
+          >
+            <Image style={styles.image} source={require('../assets/profile.png')} />
+            <Text style={activeButton === 'Profile' ? styles.activeText : styles.inactiveText}>Profile</Text>
+          </Pressable>
+        </View>
         <View>
           <Pressable
             onPress={() => handlePress('Farm')}
@@ -35,7 +43,7 @@ const NavigationBar = () => {
             style={[styles.pressable, activeButton === 'Calender' && styles.pressableActive]}
           >
             <Image style={styles.image} source={require('../assets/calender.png')} />
-            <Text style={activeButton === 'Calendar' ? styles.activeText : styles.inactiveText}>Calendar</Text>
+            <Text style={activeButton === 'Calender' ? styles.activeText : styles.inactiveText}>Calender</Text>
           </Pressable>
         </View>
         <View>

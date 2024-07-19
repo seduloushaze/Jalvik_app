@@ -12,6 +12,7 @@ import CalenderPage from './src/components/CalenderPage';
 import DiseasePage from './src/components/DiseasePage';
 import FertilizerPage from './src/components/FertilizerPage';
 import PlotsPage from './src/components/PlotsPage';
+import ProfilePage from './src/components/ProfilePage';
 
 enableScreens();
 
@@ -24,6 +25,7 @@ export type RootStackParamList = {
   DiseasePage: undefined;
   FertilizerPage: undefined;
   PlotsPage: undefined;
+  ProfilePage: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -40,6 +42,7 @@ export default function App(): JSX.Element {
         <Stack.Screen name="DiseasePage" component={DiseasePage } />
         <Stack.Screen name="FertilizerPage" component={FertilizerPage } />
         <Stack.Screen name="PlotsPage" component={PlotsPage } />
+        <Stack.Screen name="ProfilePage" component={ProfilePage } />
       </Stack.Navigator>
     </NavigationContainer>
   );
