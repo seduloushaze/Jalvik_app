@@ -4,10 +4,10 @@ import com.facebook.react.ReactApplication
 import com.facebook.react.ReactNativeHost
 import com.facebook.react.ReactPackage
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.load
-import com.facebook.react.defaults.DefaultReactHost.getDefaultReactHost
 import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.soloader.SoLoader
-//import com.airbnb.android.react.lottie.LottiePackage
+import com.frontend.BuildConfig
+
 
 class MainApplication : Application(), ReactApplication {
 
@@ -15,10 +15,7 @@ class MainApplication : Application(), ReactApplication {
         object : DefaultReactNativeHost(this) {
             override fun getPackages(): List<ReactPackage> {
                 // Get the list of packages from PackageList
-                val packages = PackageList(this).packages.toMutableList()
-                // Add LottiePackage to the list
-                packages.add(new LottiePackage());
-                return packages
+                return PackageList(this).packages.toMutableList()
             }
 
             override fun getJSMainModuleName(): String = "index"
